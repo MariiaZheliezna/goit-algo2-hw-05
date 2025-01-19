@@ -28,12 +28,12 @@ def check_password_uniqueness(bloom_filter, passwords):
     results = {}
     for password in passwords:
         if not isinstance(password, str):
-            results[str(password)] = "Некоректне значення"
+            results[str(password)] = "некоректний пароль"
         elif bloom_filter.contains(password):
-            results[password] = "Не унікальний"
+            results[password] = "вже використаний"
         else:
             bloom_filter.add(password)
-            results[password] = "Унікальний"
+            results[password] = "унікальний"
     return results
 
 if __name__ == "__main__":
